@@ -8,9 +8,9 @@ import io.swagger.annotations.ApiParam;
 
 import com.sun.jersey.multipart.FormDataParam;
 
-import io.swagger.model.Error;
 import io.swagger.model.Job;
 import java.math.BigDecimal;
+import io.swagger.model.Error;
 import io.swagger.model.Conversion;
 import io.swagger.model.InputFile;
 import io.swagger.model.OutputFile;
@@ -49,7 +49,7 @@ public class JobsApi  {
 
     public Response jobsGet(@ApiParam(value = "Filter the status of the job.") @QueryParam("status") String status,
     @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "Pagination for list of elements.", defaultValue="1") @QueryParam("page") BigDecimal page)
     throws NotFoundException {
     return delegate.jobsGet(status,token,key,page);
@@ -70,7 +70,7 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 500, message = "Server not available.") })
 
-    public Response jobsPost(@ApiParam(value = "Api key for the user to filter.",required=true) @QueryParam("key") String key,
+    public Response jobsPost(@ApiParam(value = "Api key for the user to filter." ,required=true )@HeaderParam("key") String key,
     @ApiParam(value = "Content of the job." ,required=true ) Job body)
     throws NotFoundException {
     return delegate.jobsPost(key,body);
@@ -88,7 +88,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdGet(token,key,jobId);
@@ -106,7 +106,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdDelete(token,key,jobId);
@@ -127,7 +127,7 @@ public class JobsApi  {
 
     public Response jobsJobIdPatch(@ApiParam(value = "Content of the job." ,required=true ) Job body,
     @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdPatch(body,token,key,jobId);
@@ -145,7 +145,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdConversionsGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdConversionsGet(token,key,jobId);
@@ -164,7 +164,7 @@ public class JobsApi  {
 
     public Response jobsJobIdConversionsPost(@ApiParam(value = "information for the conversion." ,required=true ) Conversion body,
     @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdConversionsPost(body,token,key,jobId);
@@ -182,7 +182,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdConversionsConversionIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Identifier for the job conversion.",required=true ) @PathParam("conversion_id") String conversionId)
     throws NotFoundException {
@@ -201,7 +201,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdConversionsConversionIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Identifier for the job conversion.",required=true ) @PathParam("conversion_id") String conversionId)
     throws NotFoundException {
@@ -220,7 +220,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdInputGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdInputGet(token,key,jobId);
@@ -239,7 +239,7 @@ public class JobsApi  {
 
     public Response jobsJobIdInputPost(@ApiParam(value = ""  ) InputFile body,
     @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdInputPost(body,token,key,jobId);
@@ -257,7 +257,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdInputFileIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
@@ -276,7 +276,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdInputFileIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
@@ -297,7 +297,7 @@ public class JobsApi  {
     public Response jobsJobIdOutputGet(@ApiParam(value = "") @QueryParam("conversion_id") String conversionId,
     @ApiParam(value = "") @QueryParam("input_id") String inputId,
     @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdOutputGet(conversionId,inputId,token,key,jobId);
@@ -315,7 +315,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdOutputFileIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
@@ -334,7 +334,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdOutputFileIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
@@ -353,7 +353,7 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdThreadsGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter.") @QueryParam("key") String key,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
     return delegate.jobsJobIdThreadsGet(token,key,jobId);
