@@ -48,11 +48,11 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid input.") })
 
     public Response jobsGet(@ApiParam(value = "Filter the status of the job.") @QueryParam("status") String status,
-    @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    @ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "Pagination for list of elements.", defaultValue="1") @QueryParam("page") BigDecimal page)
     throws NotFoundException {
-    return delegate.jobsGet(status,token,key,page);
+    return delegate.jobsGet(status,xOcToken,xOcApiKey,page);
     }
     @POST
     
@@ -70,10 +70,10 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 500, message = "Server not available.") })
 
-    public Response jobsPost(@ApiParam(value = "Api key for the user to filter." ,required=true )@HeaderParam("key") String key,
+    public Response jobsPost(@ApiParam(value = "Api key for the user to filter." ,required=true )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "Content of the job." ,required=true ) Job body)
     throws NotFoundException {
-    return delegate.jobsPost(key,body);
+    return delegate.jobsPost(xOcApiKey,body);
     }
     @GET
     @Path("/{job_id}")
@@ -87,11 +87,11 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdGet(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdGet(token,key,jobId);
+    return delegate.jobsJobIdGet(xOcToken,xOcApiKey,jobId);
     }
     @DELETE
     @Path("/{job_id}")
@@ -105,11 +105,11 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdDelete(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdDelete(token,key,jobId);
+    return delegate.jobsJobIdDelete(xOcToken,xOcApiKey,jobId);
     }
     @PATCH
     @Path("/{job_id}")
@@ -126,11 +126,11 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdPatch(@ApiParam(value = "Content of the job." ,required=true ) Job body,
-    @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    @ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdPatch(body,token,key,jobId);
+    return delegate.jobsJobIdPatch(body,xOcToken,xOcApiKey,jobId);
     }
     @GET
     @Path("/{job_id}/conversions")
@@ -144,11 +144,11 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdConversionsGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdConversionsGet(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdConversionsGet(token,key,jobId);
+    return delegate.jobsJobIdConversionsGet(xOcToken,xOcApiKey,jobId);
     }
     @POST
     @Path("/{job_id}/conversions")
@@ -163,11 +163,11 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdConversionsPost(@ApiParam(value = "information for the conversion." ,required=true ) Conversion body,
-    @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    @ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdConversionsPost(body,token,key,jobId);
+    return delegate.jobsJobIdConversionsPost(body,xOcToken,xOcApiKey,jobId);
     }
     @GET
     @Path("/{job_id}/conversions/{conversion_id}")
@@ -181,12 +181,12 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdConversionsConversionIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdConversionsConversionIdGet(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Identifier for the job conversion.",required=true ) @PathParam("conversion_id") String conversionId)
     throws NotFoundException {
-    return delegate.jobsJobIdConversionsConversionIdGet(token,key,jobId,conversionId);
+    return delegate.jobsJobIdConversionsConversionIdGet(xOcToken,xOcApiKey,jobId,conversionId);
     }
     @DELETE
     @Path("/{job_id}/conversions/{conversion_id}")
@@ -200,12 +200,12 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdConversionsConversionIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdConversionsConversionIdDelete(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Identifier for the job conversion.",required=true ) @PathParam("conversion_id") String conversionId)
     throws NotFoundException {
-    return delegate.jobsJobIdConversionsConversionIdDelete(token,key,jobId,conversionId);
+    return delegate.jobsJobIdConversionsConversionIdDelete(xOcToken,xOcApiKey,jobId,conversionId);
     }
     @GET
     @Path("/{job_id}/input")
@@ -219,11 +219,11 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdInputGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdInputGet(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdInputGet(token,key,jobId);
+    return delegate.jobsJobIdInputGet(xOcToken,xOcApiKey,jobId);
     }
     @POST
     @Path("/{job_id}/input")
@@ -238,11 +238,11 @@ public class JobsApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
     public Response jobsJobIdInputPost(@ApiParam(value = ""  ) InputFile body,
-    @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    @ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdInputPost(body,token,key,jobId);
+    return delegate.jobsJobIdInputPost(body,xOcToken,xOcApiKey,jobId);
     }
     @GET
     @Path("/{job_id}/input/{file_id}")
@@ -256,12 +256,12 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdInputFileIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdInputFileIdGet(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
-    return delegate.jobsJobIdInputFileIdGet(token,key,jobId,fileId);
+    return delegate.jobsJobIdInputFileIdGet(xOcToken,xOcApiKey,jobId,fileId);
     }
     @DELETE
     @Path("/{job_id}/input/{file_id}")
@@ -275,12 +275,12 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdInputFileIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdInputFileIdDelete(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
-    return delegate.jobsJobIdInputFileIdDelete(token,key,jobId,fileId);
+    return delegate.jobsJobIdInputFileIdDelete(xOcToken,xOcApiKey,jobId,fileId);
     }
     @GET
     @Path("/{job_id}/output")
@@ -296,11 +296,11 @@ public class JobsApi  {
 
     public Response jobsJobIdOutputGet(@ApiParam(value = "") @QueryParam("conversion_id") String conversionId,
     @ApiParam(value = "") @QueryParam("input_id") String inputId,
-    @ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    @ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdOutputGet(conversionId,inputId,token,key,jobId);
+    return delegate.jobsJobIdOutputGet(conversionId,inputId,xOcToken,xOcApiKey,jobId);
     }
     @GET
     @Path("/{job_id}/output/{file_id}")
@@ -314,12 +314,12 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdOutputFileIdGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdOutputFileIdGet(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
-    return delegate.jobsJobIdOutputFileIdGet(token,key,jobId,fileId);
+    return delegate.jobsJobIdOutputFileIdGet(xOcToken,xOcApiKey,jobId,fileId);
     }
     @DELETE
     @Path("/{job_id}/output/{file_id}")
@@ -333,12 +333,12 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdOutputFileIdDelete(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdOutputFileIdDelete(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId,
     @ApiParam(value = "Id of the file to download",required=true ) @PathParam("file_id") String fileId)
     throws NotFoundException {
-    return delegate.jobsJobIdOutputFileIdDelete(token,key,jobId,fileId);
+    return delegate.jobsJobIdOutputFileIdDelete(xOcToken,xOcApiKey,jobId,fileId);
     }
     @GET
     @Path("/{job_id}/threads")
@@ -352,11 +352,11 @@ public class JobsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "The specified job does not exists.") })
 
-    public Response jobsJobIdThreadsGet(@ApiParam(value = "Token for authentication."  )@HeaderParam("token") String token,
-    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("key") String key,
+    public Response jobsJobIdThreadsGet(@ApiParam(value = "Token for authentication for the current job"  )@HeaderParam("X-Oc-Token") String xOcToken,
+    @ApiParam(value = "Api key for the user to filter."  )@HeaderParam("X-Oc-Api-Key") String xOcApiKey,
     @ApiParam(value = "ID of job that needs to be fetched",required=true ) @PathParam("job_id") String jobId)
     throws NotFoundException {
-    return delegate.jobsJobIdThreadsGet(token,key,jobId);
+    return delegate.jobsJobIdThreadsGet(xOcToken,xOcApiKey,jobId);
     }
 }
 
